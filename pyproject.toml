@@ -1,0 +1,11 @@
+[project]
+name = "pyincc"
+version = "0.1.0"
+description = "Software Evidence Scanner for Windows"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
