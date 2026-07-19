@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyincc"
+version = "1.0.0"
+description = "Software Evidence Scanner for Windows"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "PYINCC" }
+]
+dependencies = [
+  "openpyxl>=3.1.0"
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.0.0"]
+test = ["pytest>=8.0.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
