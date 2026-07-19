@@ -1,95 +1,301 @@
 # PYINCC
 
-Software Evidence Scanner for Windows
+Software Evidence Scanner for Windows.
+
+PYINCC is a desktop application that inventories installed software and collects technical evidence from Windows, application metadata, installers, binaries, signatures, certificates and runtime state.
+
+PYINCC is built with an **Enterprise Build** workflow:
+
+> One Phase = One runnable product = Test = Freeze = Next Phase.
+
+This repository does not track progress by individual files. Progress is tracked only by complete phases that can run, be tested and then be frozen.
 
 ---
 
-## Overview
+## Product Scope
 
-PYINCC is a desktop application that inventories installed software and collects technical evidence available from Windows and application metadata.
+PYINCC is designed for:
 
-The application is designed for software inventory, internal asset management and compliance support.
+- Software inventory
+- Internal asset management
+- Software evidence collection
+- Compliance support
+- Offline, local-only scanning
 
-PYINCC does not modify software, activate licenses or bypass protection mechanisms.
+PYINCC does **not**:
 
----
-
-## Features
-
-- Scan installed software
-- Collect Registry information
-- Read executable metadata
-- Verify digital signatures
-- Collect certificate information
-- Calculate file hashes
-- Detect installer type
-- Export CSV and Excel reports
-- Offline operation
-- Local-only data storage
+- Modify installed software
+- Activate licenses
+- Bypass protection mechanisms
+- Upload scan results
+- Collect personal documents
+- Use telemetry or cloud synchronization
 
 ---
 
-## Privacy
+## Build Roadmap
 
-PYINCC stores scan results only on the local computer.
+### Phase 1 — Foundation
 
-The application does not upload scan results.
+**Status:** ☐ Not started
 
-The application does not collect personal documents.
+**Goal:** The application can start and present the complete desktop shell.
 
-No telemetry.
+**Scope:**
 
-No cloud synchronization.
+- Project structure
+- Single README
+- Assets
+- PyInstaller configuration
+- Logging
+- Config
+- Main entry point
+- Splash screen
+- Main window
+- Menu
+- Toolbar
+- Status bar
+- Admin manifest
+- Theme
+- Tray
+- About dialog
+
+**Freeze criteria:**
+
+```text
+PYINCC.exe
+
+✓ runs
+✓ icon
+✓ tray
+✓ splash
+✓ menu
+✓ dashboard
+✓ about
+✓ settings
+```
 
 ---
 
-## Architecture
+### Phase 2 — Scanner Engine
 
-Core
+**Status:** ☐ Not started
 
-- Registry Scanner
-- Executable Scanner
-- VersionInfo Scanner
-- Signature Scanner
-- Certificate Scanner
-- Hash Scanner
-- Installer Scanner
+**Goal:** A complete scanner engine can run from the application and return scan results.
 
-Plugins
+**Scope:**
 
-- Microsoft
+- Registry evidence
+- Executable evidence
+- VersionInfo evidence
+- Signature evidence
+- Certificate evidence
+- Hash evidence
+- Installer evidence
+- Runtime evidence
+
+**Deliverable:**
+
+```text
+Scanner Engine
+```
+
+**Freeze criteria:**
+
+```text
+Scan button
+
+✓ starts scan
+✓ collects evidence
+✓ returns normalized results
+✓ reports errors safely
+```
+
+---
+
+### Phase 3 — Plugin Manager
+
+**Status:** ☐ Not started
+
+**Goal:** Product-specific plugins can enrich scanner results.
+
+**Scope:**
+
+- Windows
+- Office
 - Adobe
 - Autodesk
 - WinRAR
 - Foxit
 - VMware
+- IDM
 
-GUI
+**Deliverable:**
+
+```text
+Plugin Manager
+```
+
+**Freeze criteria:**
+
+```text
+Plugin scan
+
+✓ loads enabled plugins
+✓ runs plugin checks
+✓ merges plugin evidence
+✓ handles plugin failures safely
+```
+
+---
+
+### Phase 4 — UI
+
+**Status:** ☐ Not started
+
+**Goal:** The complete user interface supports reviewing scanner results.
+
+**Scope:**
 
 - Dashboard
 - Inventory
 - Evidence
-- Reports
-- Settings
-- About
+- Report view
+- Search
+- Filter
+- Detail panel
+- Runtime view
+- Progress view
+- Popup notifications
+
+**Freeze criteria:**
+
+```text
+UI review workflow
+
+✓ displays dashboard
+✓ displays inventory
+✓ displays evidence
+✓ supports search and filter
+✓ shows details and progress
+```
 
 ---
 
-## Build
+### Phase 5 — Export
 
-Install dependencies
+**Status:** ☐ Not started
+
+**Goal:** Users can export complete scan output.
+
+**Scope:**
+
+- CSV export
+- Excel export
+- Report summary
+
+**Freeze criteria:**
+
+```text
+Export workflow
+
+✓ exports CSV
+✓ exports Excel
+✓ creates summary report
+✓ preserves evidence fields
+```
+
+---
+
+### Phase 6 — Polish
+
+**Status:** ☐ Not started
+
+**Goal:** The application receives final visual and usability polish.
+
+**Scope:**
+
+- Icon
+- Logo
+- Splash
+- Tray
+- Dark theme
+- Light theme
+- Animation
+- Popup
+- Loading state
+
+**Freeze criteria:**
+
+```text
+Polished desktop app
+
+✓ consistent visual identity
+✓ dark and light themes
+✓ stable tray behavior
+✓ polished loading and popup states
+```
+
+---
+
+### Phase 7 — Release
+
+**Status:** ☐ Not started
+
+**Goal:** PYINCC is packaged and ready for release.
+
+**Scope:**
+
+- Bug fixes
+- Optimization
+- Packaging
+- PyInstaller
+- Installer
+- Release artifacts
+
+**Freeze criteria:**
+
+```text
+Release build
+
+✓ packaged executable
+✓ installer artifact
+✓ release notes
+✓ final smoke test
+```
+
+---
+
+## Freeze Policy
+
+After a phase is frozen, it is not reopened for new features.
+
+A frozen phase may only be changed for:
+
+- Bug fixes
+- Crash fixes
+- Incorrect logic
+- Build or packaging breakages that block a later phase
+
+New functionality must be scheduled into the current or a future phase instead of being added back into a frozen phase.
+
+---
+
+## Development Commands
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run
+Run the application:
 
 ```bash
 python -m src.main
 ```
 
-Build
+Build the executable:
 
 ```bash
 pyinstaller build.spec
@@ -99,14 +305,22 @@ pyinstaller build.spec
 
 ## Project Status
 
+| Phase | Name | Status |
+| --- | --- | --- |
+| Phase 1 | Foundation | ☐ |
+| Phase 2 | Scanner Engine | ☐ |
+| Phase 3 | Plugin Manager | ☐ |
+| Phase 4 | UI | ☐ |
+| Phase 5 | Export | ☐ |
+| Phase 6 | Polish | ☐ |
+| Phase 7 | Release | ☐ |
+
 Architecture: Frozen
 
-Development: In Progress
+Development workflow: Enterprise Build
 
 License: MIT
 
 Copyright © 2026 PYINCC
 
-Support
-
-pyinccsupport@gmail.com
+Support: pyinccsupport@gmail.com
