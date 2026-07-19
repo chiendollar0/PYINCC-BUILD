@@ -1,10 +1,16 @@
 """Application entry point for PYINCC."""
 
+from __future__ import annotations
 
-def main() -> None:
+import sys
+
+from src.bootstrap import run
+
+
+def main() -> int:
     """Start the PYINCC application."""
-    print("PYINCC Software Evidence Scanner")
+    return run(sys.argv)
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
